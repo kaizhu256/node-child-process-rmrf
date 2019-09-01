@@ -1,6 +1,6 @@
 // usr/bin/env node
 /*
- * lib.child_process_rmrf.js (0.0.1)
+ * lib.child_process_rmrf.js (2019.9.1)
  * https://github.com/kaizhu256/node-child-process-rmrf
  * the greatest app in the world!
  *
