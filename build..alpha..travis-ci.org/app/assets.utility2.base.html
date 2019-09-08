@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- "assets.utility2.template.html" -->
-<title>child-process-rmrf (2019.9.1)</title>
+<title>child-process-rmrf (0.0.1)</title>
 <style>
 /* jslint utility2:true */
 /*csslint
@@ -41,7 +41,7 @@ a {
     overflow-wrap: break-word;
 }
 body {
-    background: #eef;
+    background: #f7f7f7;
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     margin: 0 40px;
@@ -114,9 +114,6 @@ pre {
 .uiAnimateSlide {
     overflow-y: hidden;
     transition: max-height ease-in 250ms, min-height ease-in 250ms, padding-bottom ease-in 250ms, padding-top ease-in 250ms;
-}
-.utility2FooterDiv {
-    text-align: center;
 }
 .zeroPixel {
     border: 0;
@@ -405,29 +402,34 @@ pre {
 </script>
 <h1>
 
-    <a
-        
-        href="https://github.com/kaizhu256/node-child-process-rmrf"
-        
-        target="_blank"
-    >
+<a
+    
+    href="https://github.com/kaizhu256/node-child-process-rmrf"
+    
+    target="_blank"
+>
 
-        child-process-rmrf (2019.9.1)
+    child-process-rmrf (0.0.1)
 
-    </a>
+</a>
 
 </h1>
 <h3>the greatest app in the world!</h3>
 
 <a class="button" download href="assets.app.js">download standalone app</a><br>
-<button class="button" data-onevent="testRunBrowser" id="testRunButton1">run internal test</button><br>
-<div class="uiAnimateSlide" id="testReportDiv1" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"></div>
+<button class="button" data-onevent="testRunBrowser" id="buttonTestRun1">run internal test</button><br>
+<div class="uiAnimateSlide" id="htmlTestReport1" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"></div>
 
 
 
 
+<!-- custom-html-start -->
 <label>stderr and stdout</label>
 <pre class="onevent-reset-output readonly textarea" id="outputStdout1" tabIndex="0"></pre>
+<!-- custom-html-end -->
+
+
+
 
 
 
@@ -439,11 +441,34 @@ pre {
 <script src="assets.test.js"></script>
 <script>window.utility2_onReadyBefore();</script>
 
+<script>
+/* jslint utility2:true */
+(function () {
+"use strict";
+var htmlTestReport1;
+var local;
+htmlTestReport1 = document.querySelector("#htmlTestReport1");
+if (!htmlTestReport1) {
+    return;
+}
+local = window.utility2;
+local.on("utility2.testRunProgressUpdate", function (testReport) {
+    htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});
+});
+local.on("utility2.testRunStart", function (testReport) {
+    local.uiAnimateSlideDown(htmlTestReport1);
+    htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});
+});
+}());
+</script>
 
 
-<div class="utility2FooterDiv">
-    [ this app was created with
-    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+<div style="text-align: center;">
+    [
+    this app was created with
+    <a
+        href="https://github.com/kaizhu256/node-utility2" target="_blank"
+    >utility2</a>
     ]
 </div>
 </body>

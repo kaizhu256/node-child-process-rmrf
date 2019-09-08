@@ -279,7 +279,7 @@
 </script>
 <div class="header high">
     <h1 style="font-weight: bold;">
-        <a href="https://github.com/kaizhu256/node-child-process-rmrf">child-process-rmrf (2019.9.1)</a>
+        <a href="https://github.com/kaizhu256/node-child-process-rmrf">child-process-rmrf (0.0.1)</a>
     </h1>
     <h1>Code coverage report for <span class="entity">node-child-process-rmrf/lib.child_process_rmrf.js</span></h1>
     <table class="tableHeader">
@@ -293,11 +293,11 @@
     </tr>
     </thead>
     <tbody>
-        <td>statements: 31<br>branches: 18<br>functions: 8</td>
-        <td>100%<br>(89 / 89)</td>
-        <td>100%<br>(40 / 40)</td>
+        <td>statements: 29<br>branches: 18<br>functions: 8</td>
+        <td>100%<br>(87 / 87)</td>
+        <td>100%<br>(38 / 38)</td>
         <td>100%<br>(13 / 13)</td>
-        <td>100%<br>(89 / 89)</td>
+        <td>100%<br>(87 / 87)</td>
     </tbody>
     </table>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">node-child-process-rmrf/</a> &#187; lib.child_process_rmrf.js</div>
@@ -532,10 +532,6 @@
 <a href="#L226" id="L226">226</a>
 <a href="#L227" id="L227">227</a>
 <a href="#L228" id="L228">228</a>
-<a href="#L229" id="L229">229</a>
-<a href="#L230" id="L230">230</a>
-<a href="#L231" id="L231">231</a>
-<a href="#L232" id="L232">232</a>
 </td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -563,8 +559,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
@@ -580,8 +574,6 @@
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -769,7 +761,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js" tabIndex="0">//#!/usr/bin/env node
 /*
- * lib.child_process_rmrf.js (2019.9.1)
+ * lib.child_process_rmrf.js (0.0.1)
  * https://github.com/kaizhu256/node-child-process-rmrf
  * the greatest app in the world!
  *
@@ -789,15 +781,13 @@
     // init debug_inline
     <span class="skip-if-branch" title="if path not taken" >I</span>if (!globalThis["debug\u0049nline"]) {
 <span class="cstat-skip" title="statement not covered" >        consoleError = console.error;</span>
-<span class="cstat-skip" title="statement not covered" >        globalThis["debug\u0049nline"] = <span class="fstat-skip" title="function not covered" >function () {</span></span>
+<span class="cstat-skip" title="statement not covered" >        globalThis["debug\u0049nline"] = <span class="fstat-skip" title="function not covered" >function (...argList) {</span></span>
         /*
-         * this function will both print &lt;arguments&gt; to stderr
-         * and return &lt;arguments&gt;[0]
+         * this function will both print &lt;argList&gt; to stderr
+         * and return &lt;argList&gt;[0]
          */
-<span class="cstat-skip" title="statement not covered" >            var argList;</span>
-<span class="cstat-skip" title="statement not covered" >            argList = Array.from(arguments); </span>// jslint ignore:line
-            // debug arguments
-<span class="cstat-skip" title="statement not covered" >            globalThis["debug\u0049nlineArguments"] = argList;</span>
+            // debug argList
+<span class="cstat-skip" title="statement not covered" >            globalThis["debug\u0049nlineArgList"] = argList;</span>
 <span class="cstat-skip" title="statement not covered" >            consoleError("\n\ndebug\u0049nline");</span>
 <span class="cstat-skip" title="statement not covered" >            consoleError.apply(console, argList);</span>
 <span class="cstat-skip" title="statement not covered" >            consoleError("\n");</span>
@@ -811,14 +801,12 @@
     globalThis.globalLocal = local;
     // init isBrowser
     local.isBrowser = (
-        typeof window === "object"
-        &amp;&amp; window === globalThis
-        &amp;&amp; typeof window.XMLHttpRequest === "function"
-        &amp;&amp; window.document
-        &amp;&amp; typeof window.document.querySelector === "function"
+        typeof globalThis.XMLHttpRequest === "function"
+        &amp;&amp; globalThis.navigator
+        &amp;&amp; typeof globalThis.navigator.userAgent === "string"
     );
     // init function
-    local.assertThrow = <span class="fstat-skip" title="function not covered" >function (passed, message) {</span>
+    local.assertOrThrow = <span class="fstat-skip" title="function not covered" >function (passed, message) {</span>
     /*
      * this function will throw err.&lt;message&gt; if &lt;passed&gt; is falsy
      */
@@ -1002,7 +990,7 @@ return;
 </table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sun, 01 Sep 2019 15:36:22 GMT</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sun, 08 Sep 2019 17:49:43 GMT</div>
 </div>
 </body>
 </html>

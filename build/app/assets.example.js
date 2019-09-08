@@ -119,15 +119,13 @@ instruction
     // init debug_inline
     if (!globalThis["debug\u0049nline"]) {
         consoleError = console.error;
-        globalThis["debug\u0049nline"] = function () {
+        globalThis["debug\u0049nline"] = function (...argList) {
         /*
-         * this function will both print <arguments> to stderr
-         * and return <arguments>[0]
+         * this function will both print <argList> to stderr
+         * and return <argList>[0]
          */
-            var argList;
-            argList = Array.from(arguments); // jslint ignore:line
-            // debug arguments
-            globalThis["debug\u0049nlineArguments"] = argList;
+            // debug argList
+            globalThis["debug\u0049nlineArgList"] = argList;
             consoleError("\n\ndebug\u0049nline");
             consoleError.apply(console, argList);
             consoleError("\n");
@@ -141,14 +139,12 @@ instruction
     globalThis.globalLocal = local;
     // init isBrowser
     local.isBrowser = (
-        typeof window === "object"
-        && window === globalThis
-        && typeof window.XMLHttpRequest === "function"
-        && window.document
-        && typeof window.document.querySelector === "function"
+        typeof globalThis.XMLHttpRequest === "function"
+        && globalThis.navigator
+        && typeof globalThis.navigator.userAgent === "string"
     );
     // init function
-    local.assertThrow = function (passed, message) {
+    local.assertOrThrow = function (passed, message) {
     /*
      * this function will throw err.<message> if <passed> is falsy
      */
@@ -323,7 +319,6 @@ if (!local.isBrowser) {
 }
 // log stderr and stdout to #outputStdout1
 ["error", "log"].forEach(function (key) {
-    var argList;
     var elem;
     var fnc;
     elem = document.querySelector(
@@ -333,8 +328,7 @@ if (!local.isBrowser) {
         return;
     }
     fnc = console[key];
-    console[key] = function () {
-        argList = Array.from(arguments); // jslint ignore:line
+    console[key] = function (...argList) {
         fnc.apply(console, argList);
         // append text to #outputStdout1
         elem.textContent += argList.map(function (arg) {
@@ -371,7 +365,7 @@ local.testRunBrowser = function (evt) {
     // run browser-tests
     default:
         if (
-            (evt.target && evt.target.id) !== "testRunButton1"
+            (evt.target && evt.target.id) !== "buttonTestRun1"
             && !(evt.modeInit && (
                 /\bmodeTest=1\b/
             ).test(location.search))
@@ -380,14 +374,14 @@ local.testRunBrowser = function (evt) {
         }
         // show browser-tests
         if (document.querySelector(
-            "#testReportDiv1"
+            "#htmlTestReport1"
         ).style.maxHeight === "0px") {
             globalThis.domOnEventDelegateDict.domOnEventResetOutput();
             local.uiAnimateSlideDown(document.querySelector(
-                "#testReportDiv1"
+                "#htmlTestReport1"
             ));
             document.querySelector(
-                "#testRunButton1"
+                "#buttonTestRun1"
             ).textContent = "hide internal test";
             local.modeTest = 1;
             local.testRunDefault(local);
@@ -395,10 +389,10 @@ local.testRunBrowser = function (evt) {
         }
         // hide browser-tests
         local.uiAnimateSlideUp(document.querySelector(
-            "#testReportDiv1"
+            "#htmlTestReport1"
         ));
         document.querySelector(
-            "#testRunButton1"
+            "#buttonTestRun1"
         ).textContent = "run internal test";
     }
 };
@@ -480,7 +474,7 @@ a {\n\
     overflow-wrap: break-word;\n\
 }\n\
 body {\n\
-    background: #eef;\n\
+    background: #f7f7f7;\n\
     font-family: Arial, Helvetica, sans-serif;\n\
     font-size: small;\n\
     margin: 0 40px;\n\
@@ -553,9 +547,6 @@ pre {\n\
 .uiAnimateSlide {\n\
     overflow-y: hidden;\n\
     transition: max-height ease-in 250ms, min-height ease-in 250ms, padding-bottom ease-in 250ms, padding-top ease-in 250ms;\n\
-}\n\
-.utility2FooterDiv {\n\
-    text-align: center;\n\
 }\n\
 .zeroPixel {\n\
     border: 0;\n\
@@ -844,29 +835,34 @@ pre {\n\
 </script>\n\
 <h1>\n\
 <!-- utility2-comment\n\
-    <a\n\
-        {{#if env.npm_package_homepage}}\n\
-        href="{{env.npm_package_homepage}}"\n\
-        {{/if env.npm_package_homepage}}\n\
-        target="_blank"\n\
-    >\n\
+<a\n\
+    {{#if env.npm_package_homepage}}\n\
+    href="{{env.npm_package_homepage}}"\n\
+    {{/if env.npm_package_homepage}}\n\
+    target="_blank"\n\
+>\n\
 utility2-comment -->\n\
-        {{env.npm_package_name}} ({{env.npm_package_version}})\n\
+    {{env.npm_package_name}} ({{env.npm_package_version}})\n\
 <!-- utility2-comment\n\
-    </a>\n\
+</a>\n\
 utility2-comment -->\n\
 </h1>\n\
 <h3>{{env.npm_package_description}}</h3>\n\
 <!-- utility2-comment\n\
 <a class="button" download href="assets.app.js">download standalone app</a><br>\n\
-<button class="button" data-onevent="testRunBrowser" id="testRunButton1">run internal test</button><br>\n\
-<div class="uiAnimateSlide" id="testReportDiv1" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"></div>\n\
+<button class="button" data-onevent="testRunBrowser" id="buttonTestRun1">run internal test</button><br>\n\
+<div class="uiAnimateSlide" id="htmlTestReport1" style="border-bottom: 0; border-top: 0; margin-bottom: 0; margin-top: 0; max-height: 0; padding-bottom: 0; padding-top: 0;"></div>\n\
 utility2-comment -->\n\
 \n\
 \n\
 \n\
+<!-- custom-html-start -->\n\
 <label>stderr and stdout</label>\n\
 <pre class="onevent-reset-output readonly textarea" id="outputStdout1" tabIndex="0"></pre>\n\
+<!-- custom-html-end -->\n\
+\n\
+\n\
+\n\
 <!-- utility2-comment\n\
 {{#if isRollup}}\n\
 <script src="assets.app.js"></script>\n\
@@ -879,12 +875,35 @@ utility2-comment -->\n\
 <script src="assets.example.js"></script>\n\
 <script src="assets.test.js"></script>\n\
 <script>window.utility2_onReadyBefore();</script>\n\
-<!-- utility2-comment\n\
 {{/if isRollup}}\n\
+<script>\n\
+/* jslint utility2:true */\n\
+(function () {\n\
+"use strict";\n\
+var htmlTestReport1;\n\
+var local;\n\
+htmlTestReport1 = document.querySelector("#htmlTestReport1");\n\
+if (!htmlTestReport1) {\n\
+    return;\n\
+}\n\
+local = window.utility2;\n\
+local.on("utility2.testRunProgressUpdate", function (testReport) {\n\
+    htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});\n\
+});\n\
+local.on("utility2.testRunStart", function (testReport) {\n\
+    local.uiAnimateSlideDown(htmlTestReport1);\n\
+    htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});\n\
+});\n\
+}());\n\
+</script>\n\
+<!-- utility2-comment\n\
 utility2-comment -->\n\
-<div class="utility2FooterDiv">\n\
-    [ this app was created with\n\
-    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>\n\
+<div style="text-align: center;">\n\
+    [\n\
+    this app was created with\n\
+    <a\n\
+        href="https://github.com/kaizhu256/node-utility2" target="_blank"\n\
+    >utility2</a>\n\
     ]\n\
 </div>\n\
 </body>\n\
