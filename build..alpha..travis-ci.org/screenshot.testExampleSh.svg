@@ -7,7 +7,7 @@
 
 <tspan x="10" y="58"></tspan>
 <tspan x="10" y="74">  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0</tspan>
-<tspan x="10" y="90">100 2446k  100 2446k    0     0  10.3M      0 --:--:-- --:--:-- --:--:-- 10.3M</tspan>
+<tspan x="10" y="90">100 2446k  100 2446k    0     0  11.4M      0 --:--:-- --:--:-- --:--:-- 11.5M</tspan>
 
 <tspan x="10" y="106"></tspan>
 
@@ -23,14 +23,14 @@
 
 <tspan x="10" y="218">jslint - 0ms /tmp/app/example.sh</tspan>
 
-<tspan x="10" y="234">serverLog - {"time":"2019-09-08T17:52:26.107Z","type":"serverResponse","method":"GET","url":"/",\</tspan>
-<tspan x="10" y="250">"statusCode":200,"timeElapsed":16,"requestContentLength":0,"resContentLength":0,"requestHeaderXF\</tspan>
+<tspan x="10" y="234">serverLog - {"time":"2019-09-08T17:55:48.485Z","type":"serverResponse","method":"GET","url":"/",\</tspan>
+<tspan x="10" y="250">"statusCode":200,"timeElapsed":20,"requestContentLength":0,"resContentLength":0,"requestHeaderXF\</tspan>
 <tspan x="10" y="266">orwardedFor":"","requestHeaderOrigin":"","requestHeaderReferer":"","requestHeaderUserAgent":"Moz\</tspan>
 <tspan x="10" y="282">illa/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/76.0.3809.132\</tspan>
 <tspan x="10" y="298"> Safari/537.36"}</tspan>
 
-<tspan x="10" y="314">serverLog - {"time":"2019-09-08T17:52:26.147Z","type":"serverResponse","method":"GET","url":"/as\</tspan>
-<tspan x="10" y="330">sets.app.js","statusCode":200,"timeElapsed":161,"requestContentLength":0,"resContentLength":0,"r\</tspan>
+<tspan x="10" y="314">serverLog - {"time":"2019-09-08T17:55:48.515Z","type":"serverResponse","method":"GET","url":"/as\</tspan>
+<tspan x="10" y="330">sets.app.js","statusCode":200,"timeElapsed":160,"requestContentLength":0,"resContentLength":0,"r\</tspan>
 <tspan x="10" y="346">equestHeaderXForwardedFor":"","requestHeaderOrigin":"","requestHeaderReferer":"http://127.0.0.1:\</tspan>
 <tspan x="10" y="362">8081/","requestHeaderUserAgent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like\</tspan>
 <tspan x="10" y="378"> Gecko) HeadlessChrome/76.0.3809.132 Safari/537.36"}</tspan>
