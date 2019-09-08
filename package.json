@@ -1,0 +1,15 @@
+{
+    "devDependencies": {
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "name": "child-process-rmrf",
+    "homepage": "https://github.com/kaizhu256/node-child-process-rmrf",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kaizhu256/node-child-process-rmrf.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shBuildCi"
+    },
+    "version": "0.0.1"
+}
