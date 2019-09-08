@@ -1,15 +1,37 @@
 {
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "the greatest app in the world!",
     "devDependencies": {
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name": "child-process-rmrf",
+    "engines": {
+        "node": ">=10.0"
+    },
     "homepage": "https://github.com/kaizhu256/node-child-process-rmrf",
+    "keywords": [],
+    "license": "MIT",
+    "main": "lib.child_process_rmrf.js",
+    "name": "child-process-rmrf",
+    "nameAliasPublish": "",
+    "nameLib": "child_process_rmrf",
+    "nameOriginal": "child-process-rmrf",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/kaizhu256/node-child-process-rmrf.git"
     },
     "scripts": {
-        "build-ci": "utility2 shBuildCi"
+        "build-ci": "./npm_scripts.sh",
+        "env": "env",
+        "eval": "./npm_scripts.sh",
+        "heroku-postbuild": "./npm_scripts.sh",
+        "postinstall": "./npm_scripts.sh",
+        "start": "./npm_scripts.sh",
+        "test": "./npm_scripts.sh",
+        "utility2": "./npm_scripts.sh"
     },
-    "version": "0.0.1"
+    "version": "2019.9.8"
 }
