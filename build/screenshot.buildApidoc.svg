@@ -1,9 +1,9 @@
-<svg height="958" width="720" xmlns="http://www.w3.org/2000/svg">
-<rect height="958" fill="#555" width="720"></rect>
+<svg height="1038" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="1038" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
 <tspan x="10" y="26"></tspan>
 
-<tspan x="10" y="42">\x1b[35m[MODE_BUILD=buildApidoc]\x1b[0m - 2019-09-08T17:49:44.839Z - npm-testing /home/travis/bu\</tspan>
+<tspan x="10" y="42">\x1b[35m[MODE_BUILD=buildApidoc]\x1b[0m - 2019-09-08T17:51:15.006Z - npm-testing /home/travis/bu\</tspan>
 <tspan x="10" y="58">ild/kaizhu256/node-child-process-rmrf</tspan>
 
 <tspan x="10" y="74"></tspan>
@@ -13,7 +13,7 @@
 <tspan x="10" y="106">buildApidoc - merged test-report from file /home/travis/build/kaizhu256/node-child-process-rmrf/\</tspan>
 <tspan x="10" y="122">tmp/build/test-report.json</tspan>
 
-<tspan x="10" y="138">&gt; http-server listening on port 32826</tspan>
+<tspan x="10" y="138">&gt; http-server listening on port 40681</tspan>
 
 <tspan x="10" y="154">db - dropping database ...</tspan>
 
@@ -37,77 +37,86 @@
 
 <tspan x="10" y="330">apidocCreate - readExample /home/travis/build/kaizhu256/node-child-process-rmrf/test.js</tspan>
 
-<tspan x="10" y="346">apidocCreate - readExample /home/travis/build/kaizhu256/node-child-process-rmrf/.travis.yml</tspan>
+<tspan x="10" y="346">apidocCreate - readExample /home/travis/build/kaizhu256/node-child-process-rmrf/.touch.txt</tspan>
 
-<tspan x="10" y="362">apidocCreate - requiring /home/travis/build/kaizhu256/node-child-process-rmrf ...</tspan>
+<tspan x="10" y="362">apidocCreate - readExample /home/travis/build/kaizhu256/node-child-process-rmrf/.travis.yml</tspan>
 
-<tspan x="10" y="378"></tspan>
+<tspan x="10" y="378">apidocCreate - requiring /home/travis/build/kaizhu256/node-child-process-rmrf ...</tspan>
 
-<tspan x="10" y="394">buildApidoc - merged test-report from file /home/travis/build/kaizhu256/node-child-process-rmrf/\</tspan>
-<tspan x="10" y="410">tmp/build/test-report.json</tspan>
+<tspan x="10" y="394"></tspan>
 
-<tspan x="10" y="426">apidocCreate - ... required /home/travis/build/kaizhu256/node-child-process-rmrf</tspan>
+<tspan x="10" y="410">buildApidoc - merged test-report from file /home/travis/build/kaizhu256/node-child-process-rmrf/\</tspan>
+<tspan x="10" y="426">tmp/build/test-report.json</tspan>
 
-<tspan x="10" y="442">created apidoc file /home/travis/build/kaizhu256/node-child-process-rmrf/apidoc.html</tspan>
+<tspan x="10" y="442">apidocCreate - ... required /home/travis/build/kaizhu256/node-child-process-rmrf</tspan>
 
-<tspan x="10" y="458"></tspan>
+<tspan x="10" y="458">created apidoc file /home/travis/build/kaizhu256/node-child-process-rmrf/apidoc.html</tspan>
 
-<tspan x="10" y="474">testRunDefault - 200 ms - [node test-case 1 of 1 passed] - testCase_buildApidoc_default</tspan>
+<tspan x="10" y="474"></tspan>
 
-<tspan x="10" y="490">jslint - 203ms /home/travis/build/kaizhu256/node-child-process-rmrf/README.md</tspan>
+<tspan x="10" y="490">testRunDefault - 90360 ms - [node test-case 1 of 1 passed] - testCase_buildApidoc_default</tspan>
 
-<tspan x="10" y="506">jslint - 31ms /home/travis/build/kaizhu256/node-child-process-rmrf/lib.child_process_rmrf.js</tspan>
+<tspan x="10" y="506">jslint - 202ms /home/travis/build/kaizhu256/node-child-process-rmrf/README.md</tspan>
 
-<tspan x="10" y="522">jslint - 1ms /home/travis/build/kaizhu256/node-child-process-rmrf/npm_scripts.sh</tspan>
+<tspan x="10" y="522">jslint - 35ms /home/travis/build/kaizhu256/node-child-process-rmrf/lib.child_process_rmrf.js</tspan>
 
-<tspan x="10" y="538">jslint - 0ms /home/travis/build/kaizhu256/node-child-process-rmrf/package.json</tspan>
+<tspan x="10" y="538">jslint - 2ms /home/travis/build/kaizhu256/node-child-process-rmrf/npm_scripts.sh</tspan>
 
-<tspan x="10" y="554">jslint - 17ms /home/travis/build/kaizhu256/node-child-process-rmrf/test.js</tspan>
+<tspan x="10" y="554">jslint - 0ms /home/travis/build/kaizhu256/node-child-process-rmrf/package.json</tspan>
 
-<tspan x="10" y="570"></tspan>
+<tspan x="10" y="570">jslint - 15ms /home/travis/build/kaizhu256/node-child-process-rmrf/test.js</tspan>
 
-<tspan x="10" y="586">buildApidoc - merged test-report from file /home/travis/build/kaizhu256/node-child-process-rmrf/\</tspan>
-<tspan x="10" y="602">tmp/build/test-report.json</tspan>
+<tspan x="10" y="586"></tspan>
 
-<tspan x="10" y="618"></tspan>
+<tspan x="10" y="602">buildApidoc - merged test-report from file /home/travis/build/kaizhu256/node-child-process-rmrf/\</tspan>
+<tspan x="10" y="618">tmp/build/test-report.json</tspan>
 
-<tspan x="10" y="634">-------------------------------------------------------</tspan>
+<tspan x="10" y="634"></tspan>
 
-<tspan x="10" y="650">| test-report - buildApidoc - node - linux v12.10.0 - 2019-09-08T17:49:44.963Z</tspan>
+<tspan x="10" y="650">-------------------------------------------------------</tspan>
 
-<tspan x="10" y="666">|     204 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="666">| test-report - buildApidoc - node - linux v12.10.0 - 2019-09-08T17:49:44.963Z</tspan>
 
-<tspan x="10" y="682">-------------------------------------------------------</tspan>
+<tspan x="10" y="682">|   90365 ms            0 failed        1 passed      |</tspan>
 
-<tspan x="10" y="698">| test-report - buildApp - node - linux v12.10.0 - 2019-09-08T17:49:25.598Z</tspan>
+<tspan x="10" y="698">-------------------------------------------------------</tspan>
 
-<tspan x="10" y="714">|   17232 ms            0 failed        7 passed      |</tspan>
+<tspan x="10" y="714">| test-report - buildApp - node - linux v12.10.0 - 2019-09-08T17:49:25.598Z</tspan>
 
-<tspan x="10" y="730">-------------------------------------------------------</tspan>
+<tspan x="10" y="730">|   17232 ms            0 failed        7 passed      |</tspan>
 
-<tspan x="10" y="746">| test-report - npmTest - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTM\</tspan>
-<tspan x="10" y="762">L, like Gecko) HeadlessChrome/76.0.3809.132 Safari/537.36 - 2019-09-08T17:49:38.727Z</tspan>
+<tspan x="10" y="746">-------------------------------------------------------</tspan>
 
-<tspan x="10" y="778">|    1003 ms            0 failed        1 passed      |</tspan>
+<tspan x="10" y="762">| test-report - npmTest - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTM\</tspan>
+<tspan x="10" y="778">L, like Gecko) HeadlessChrome/76.0.3809.132 Safari/537.36 - 2019-09-08T17:49:38.727Z</tspan>
 
-<tspan x="10" y="794">-------------------------------------------------------</tspan>
+<tspan x="10" y="794">|    1003 ms            0 failed        1 passed      |</tspan>
 
-<tspan x="10" y="810"></tspan>
+<tspan x="10" y="810">-------------------------------------------------------</tspan>
 
-<tspan x="10" y="826">created test-report file /home/travis/build/kaizhu256/node-child-process-rmrf/tmp/build/test-rep\</tspan>
-<tspan x="10" y="842">ort.html</tspan>
+<tspan x="10" y="826">| test-report - npmTest - browser - / - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTM\</tspan>
+<tspan x="10" y="842">L, like Gecko) HeadlessChrome/76.0.3809.132 Safari/537.36 - 2019-09-08T17:51:08.360Z</tspan>
 
-<tspan x="10" y="858"></tspan>
+<tspan x="10" y="858">|    1004 ms            0 failed        1 passed      |</tspan>
 
-<tspan x="10" y="874"></tspan>
+<tspan x="10" y="874">-------------------------------------------------------</tspan>
 
-<tspan x="10" y="890">buildApidoc - 0 failed tests</tspan>
+<tspan x="10" y="890"></tspan>
 
-<tspan x="10" y="906"></tspan>
+<tspan x="10" y="906">created test-report file /home/travis/build/kaizhu256/node-child-process-rmrf/tmp/build/test-rep\</tspan>
+<tspan x="10" y="922">ort.html</tspan>
 
-<tspan x="10" y="922"></tspan>
+<tspan x="10" y="938"></tspan>
 
-<tspan x="10" y="938">\x1b[35m[MODE_BUILD=buildApidoc]\x1b[0m - 2019-09-08T17:49:46.488Z - EXIT_CODE - 0</tspan>
+<tspan x="10" y="954"></tspan>
+
+<tspan x="10" y="970">buildApidoc - 0 failed tests</tspan>
+
+<tspan x="10" y="986"></tspan>
+
+<tspan x="10" y="1002"></tspan>
+
+<tspan x="10" y="1018">\x1b[35m[MODE_BUILD=buildApidoc]\x1b[0m - 2019-09-08T17:51:16.648Z - EXIT_CODE - 0</tspan>
 
 </text>
 </svg>
