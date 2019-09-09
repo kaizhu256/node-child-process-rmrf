@@ -1,8 +1,8 @@
 # child-process-rmrf
-the greatest app in the world!
+this zero-dependency package will provide simple-api using child_process.spawn to "rm -rf" dir
 
 # live web demo
-- [https://kaizhu256.github.io/node-child-process-rmrf/build..beta..travis-ci.org/app](https://kaizhu256.github.io/node-child-process-rmrf/build..beta..travis-ci.org/app)
+- none
 
 
 
@@ -40,13 +40,13 @@ the greatest app in the world!
 
 
 # documentation
-#### cli help
-![screenshot](https://kaizhu256.github.io/node-child-process-rmrf/build/screenshot.npmPackageCliHelp.svg)
-
 #### api doc
 - [https://kaizhu256.github.io/node-child-process-rmrf/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-child-process-rmrf/build..beta..travis-ci.org/apidoc.html)
 
 [![apidoc](https://kaizhu256.github.io/node-child-process-rmrf/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-child-process-rmrf/build..beta..travis-ci.org/apidoc.html)
+
+#### cli help
+![screenshot](https://kaizhu256.github.io/node-child-process-rmrf/build/screenshot.npmPackageCliHelp.svg)
 
 #### todo
 - none
@@ -1022,7 +1022,7 @@ local.http.createServer(function (req, res) {
 ```json
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "the greatest app in the world!",
+    "description": "this zero-dependency package will provide simple-api using child_process.spawn to \"rm -rf\" dir",
     "devDependencies": {
         "utility2": "kaizhu256/node-utility2#alpha"
     },
