@@ -503,6 +503,7 @@ window.addEventListener("load", function () {
 <script src="assets.utility2.example.js"></script>
 <script src="assets.utility2.test.js"></script>
 
+
 <script>
 /* jslint utility2:true */
 (function () {
@@ -510,10 +511,10 @@ window.addEventListener("load", function () {
 var htmlTestReport1;
 var local;
 htmlTestReport1 = document.querySelector("#htmlTestReport1");
-if (!htmlTestReport1) {
+local = window.utility2;
+if (!(htmlTestReport1 && local)) {
     return;
 }
-local = window.utility2;
 local.on("utility2.testRunProgressUpdate", function (testReport) {
     htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});
 });

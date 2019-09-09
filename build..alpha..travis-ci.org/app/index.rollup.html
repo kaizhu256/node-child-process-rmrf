@@ -434,6 +434,7 @@ pre {
 
 <script src="assets.app.js"></script>
 
+
 <script>
 /* jslint utility2:true */
 (function () {
@@ -441,10 +442,10 @@ pre {
 var htmlTestReport1;
 var local;
 htmlTestReport1 = document.querySelector("#htmlTestReport1");
-if (!htmlTestReport1) {
+local = window.utility2;
+if (!(htmlTestReport1 && local)) {
     return;
 }
-local = window.utility2;
 local.on("utility2.testRunProgressUpdate", function (testReport) {
     htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});
 });

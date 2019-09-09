@@ -4915,7 +4915,7 @@ local.cliRun = function (opt) {
 local.gotoNext = function (opt, onError) {
 /*
  * this function will wrap onError inside recursive-function <opt>.gotoNext,
- * and append the current-stack to any err
+ * and append current-stack to any err
  */
     opt.gotoNext = local.onErrorWithStack(function (err, data, meta) {
         try {
@@ -50563,18 +50563,24 @@ utility2-comment -->\n\
 \n\
 \n\
 \n\
-<!-- utility2-comment\n\
 {{#if isRollup}}\n\
+<!-- utility2-comment\n\
 <script src="assets.app.js"></script>\n\
-{{#unless isRollup}}\n\
 utility2-comment -->\n\
+{{#unless isRollup}}\n\
+<!-- utility2-comment\n\
 <script src="assets.utility2.rollup.js"></script>\n\
 <script>window.utility2_onReadyBefore.counter += 1;</script>\n\
 <script src="jsonp.utility2.stateInit?callback=window.utility2.stateInit"></script>\n\
+utility2-comment -->\n\
 <script src="assets.{{packageJson.nameLib}}.js"></script>\n\
 <script src="assets.example.js"></script>\n\
 <script src="assets.test.js"></script>\n\
-<script>window.utility2_onReadyBefore();</script>\n\
+<script>\n\
+if(window.utility2_onReadyBefore) {\n\
+    window.utility2_onReadyBefore();\n\
+}\n\
+</script>\n\
 {{/if isRollup}}\n\
 <script>\n\
 /* jslint utility2:true */\n\
@@ -50583,10 +50589,10 @@ utility2-comment -->\n\
 var htmlTestReport1;\n\
 var local;\n\
 htmlTestReport1 = document.querySelector("#htmlTestReport1");\n\
-if (!htmlTestReport1) {\n\
+local = window.utility2;\n\
+if (!(htmlTestReport1 && local)) {\n\
     return;\n\
 }\n\
-local = window.utility2;\n\
 local.on("utility2.testRunProgressUpdate", function (testReport) {\n\
     htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});\n\
 });\n\
@@ -54323,7 +54329,7 @@ local.fsReadFileOrEmptyStringSync = function (file, opt) {
 local.gotoNext = function (opt, onError) {
 /*
  * this function will wrap onError inside recursive-function <opt>.gotoNext,
- * and append the current-stack to any err
+ * and append current-stack to any err
  */
     opt.gotoNext = local.onErrorWithStack(function (err, data, meta) {
         try {
@@ -54867,7 +54873,7 @@ local.localStorageSetItemOrClear = function (key, value) {
 
 local.middlewareAssetsCached = function (req, res, next) {
 /*
- * this function will run middleware that will serve cached-assets
+ * this function will run middleware to serve cached-assets
  */
     var opt;
     opt = {};
@@ -54922,23 +54928,32 @@ local.middlewareAssetsCached = function (req, res, next) {
 
 local.middlewareBodyRead = function (req, ignore, next) {
 /*
- * this function will run middleware that will
- * read and save the <req>-body to <req>.bodyRaw
+ * this function will run middleware to
+ * read and save <req> body to <req>.bodyRaw
  */
     // if req is already read, then goto next
     if (!req.readable) {
         next();
         return;
     }
-    local.streamReadAll(req, function (err, data) {
-        req.bodyRaw = req.bodyRaw || data;
-        next(err);
-    });
+    var chunkList;
+    chunkList = [];
+    req.on("data", function (chunk) {
+        chunkList.push(chunk);
+    }).on("end", function () {
+        req.bodyRaw = (
+            local.isBrowser
+            ? chunkList[0]
+            : Buffer.concat(chunkList)
+        );
+        next();
+    // on event-error, pass error to onError
+    }).on("error", next);
 };
 
 local.middlewareCacheControlLastModified = function (req, res, next) {
 /*
- * this function will run middleware that will update res-header last-modified
+ * this function will run middleware to update res-header last-modified
  */
     // do not cache if headers already sent or url has '?' search indicator
     if (res.headersSent || req.url.indexOf("?") >= 0) {
@@ -54970,7 +54985,7 @@ local.middlewareCacheControlLastModified = function (req, res, next) {
 
 local.middlewareError = function (err, req, res) {
 /*
- * this function will run middleware that will handle errors
+ * this function will run middleware to handle errors
  */
     // default - 404 Not Found
     if (!err) {
@@ -54991,7 +55006,7 @@ local.middlewareError = function (err, req, res) {
 
 local.middlewareFileServer = function (req, res, next) {
 /*
- * this function will run middleware that will serve files
+ * this function will run middleware to serve files
  */
     if (req.method !== "GET" || local.isBrowser) {
         next();
@@ -55032,7 +55047,7 @@ local.middlewareFileServer = function (req, res, next) {
 
 local.middlewareForwardProxy = function (req, res, next) {
 /*
- * this function will run middleware that will forward-proxy <req>
+ * this function will run middleware to forward-proxy <req>
  * to its destination-host
  */
     var isDone;
@@ -55116,7 +55131,7 @@ local.middlewareForwardProxy = function (req, res, next) {
 
 local.middlewareInit = function (req, res, next) {
 /*
- * this function will run middleware that will init <req> and <res>
+ * this function will run middleware to init <req> and <res>
  */
     // debug req and res
     local._debugServerReqRes4 = local._debugServerReqRes3;
@@ -55148,7 +55163,7 @@ local.middlewareInit = function (req, res, next) {
 
 local.middlewareJsonpStateInit = function (req, res, next) {
 /*
- * this function will run middleware that will
+ * this function will run middleware to
  * serve the browser-state wrapped in given jsonp-callback
  */
     var state;
@@ -56467,31 +56482,6 @@ local.streamCleanup = function (stream) {
             stream.destroy();
         } catch (ignore) {}
     }
-};
-
-local.streamReadAll = function (stream, onError) {
-/*
- * this function will concat data from <stream>
- * and pass to <onError> when finished reading
- */
-    var chunkList;
-    chunkList = [];
-    stream.dataLength = 0;
-    // on event-data, push buffer-chunk to chunkList
-    stream.on("data", function (chunk) {
-        chunk = local.normalizeChunk(chunk);
-        chunkList.push(chunk);
-        stream.dataLength += chunk.length;
-    // on event-end, pass concatenated-buffer to onError
-    }).on("end", function () {
-        onError(
-            null,
-            local.isBrowser
-            ? chunkList[0]
-            : local.bufferConcat(chunkList)
-        );
-    // on event-error, pass error to onError
-    }).on("error", onError);
 };
 
 local.stringHtmlSafe = function (text) {
@@ -61114,7 +61104,7 @@ local.idNameInit = function (opt) {
 
 local.middlewareBodyParse = function (req, res, next) {
 /*
- * this function will run middleware that will parse req.bodyRaw
+ * this function will run middleware to parse <req>.bodyRaw
  */
     var boundary;
     var crlf;
@@ -61240,7 +61230,7 @@ local.middlewareBodyParse = function (req, res, next) {
 
 local.middlewareCrudBuiltin = function (req, res, next) {
 /*
- * this function will run middleware that will
+ * this function will run middleware to
  * run the builtin crud-operations backed by db-lite
  */
     var crud;
@@ -61464,7 +61454,7 @@ local.middlewareCrudBuiltin = function (req, res, next) {
 
 local.middlewareCrudEnd = function (req, res, next) {
 /*
- * this function will run middleware that will end the builtin crud-operations
+ * this function will run middleware to end builtin crud-operations
  */
     if (req.swgg.crud.endArgList) {
         local.serverRespondJsonapi.apply(null, req.swgg.crud.endArgList);
@@ -61475,7 +61465,7 @@ local.middlewareCrudEnd = function (req, res, next) {
 
 local.middlewareRouter = function (req, res, next) {
 /*
- * this function will run middleware that will
+ * this function will run middleware to
  * map the req's method-path to swagger's tags[0]-crudType
  */
     var tmp;
@@ -61526,7 +61516,7 @@ local.middlewareRouter = function (req, res, next) {
 
 local.middlewareUserLogin = function (req, res, next) {
 /*
- * this function will run middleware that will handle user login
+ * this function will run middleware to handle user login
  */
     var crud;
     var opt;
@@ -61635,7 +61625,7 @@ local.middlewareUserLogin = function (req, res, next) {
 
 local.middlewareValidate = function (req, res, next) {
 /*
- * this function will run middleware that will validate the swagger-<req>
+ * this function will run middleware to validate the swagger-<req>
  */
     var crud;
     var opt;
@@ -65622,11 +65612,11 @@ window.addEventListener(\"load\", function () {\\n\\\n\
 \\n\\\n\
 \\n\\\n\
 \\n\\\n\
-<!-- utility2-comment\\n\\\n\
 {{#if isRollup}}\\n\\\n\
+<!-- utility2-comment\\n\\\n\
 <script src=\"assets.app.js\"></script>\\n\\\n\
-{{#unless isRollup}}\\n\\\n\
 utility2-comment -->\\n\\\n\
+{{#unless isRollup}}\\n\\\n\
 <script src=\"assets.utility2.lib.istanbul.js\"></script>\\n\\\n\
 <script src=\"assets.utility2.lib.jslint.js\"></script>\\n\\\n\
 <script src=\"assets.utility2.lib.db.js\"></script>\\n\\\n\
@@ -65637,7 +65627,11 @@ utility2-comment -->\\n\\\n\
 <script src=\"jsonp.utility2.stateInit?callback=window.utility2.stateInit\"></script>\\n\\\n\
 <script src=\"assets.example.js\"></script>\\n\\\n\
 <script src=\"assets.test.js\"></script>\\n\\\n\
-<script>window.utility2_onReadyBefore();</script>\\n\\\n\
+<script>\\n\\\n\
+if(window.utility2_onReadyBefore) {\\n\\\n\
+    window.utility2_onReadyBefore();\\n\\\n\
+}\\n\\\n\
+</script>\\n\\\n\
 {{/if isRollup}}\\n\\\n\
 <script>\\n\\\n\
 /* jslint utility2:true */\\n\\\n\
@@ -65646,10 +65640,10 @@ utility2-comment -->\\n\\\n\
 var htmlTestReport1;\\n\\\n\
 var local;\\n\\\n\
 htmlTestReport1 = document.querySelector(\"#htmlTestReport1\");\\n\\\n\
-if (!htmlTestReport1) {\\n\\\n\
+local = window.utility2;\\n\\\n\
+if (!(htmlTestReport1 && local)) {\\n\\\n\
     return;\\n\\\n\
 }\\n\\\n\
-local = window.utility2;\\n\\\n\
 local.on(\"utility2.testRunProgressUpdate\", function (testReport) {\\n\\\n\
     htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});\\n\\\n\
 });\\n\\\n\
@@ -66250,6 +66244,7 @@ window.addEventListener(\"load\", function () {\n\
 <script src=\"assets.utility2.example.js\"></script>\n\
 <script src=\"assets.utility2.test.js\"></script>\n\
 \n\
+\n\
 <script>\n\
 /* jslint utility2:true */\n\
 (function () {\n\
@@ -66257,10 +66252,10 @@ window.addEventListener(\"load\", function () {\n\
 var htmlTestReport1;\n\
 var local;\n\
 htmlTestReport1 = document.querySelector(\"#htmlTestReport1\");\n\
-if (!htmlTestReport1) {\n\
+local = window.utility2;\n\
+if (!(htmlTestReport1 && local)) {\n\
     return;\n\
 }\n\
-local = window.utility2;\n\
 local.on(\"utility2.testRunProgressUpdate\", function (testReport) {\n\
     htmlTestReport1.innerHTML = local.testReportMerge(testReport, {});\n\
 });\n\
@@ -67235,7 +67230,7 @@ local.testCase_buildReadme_default = function (opt, onError) {\n\
             ),\n\
             // customize quickstart-example-js-html-script\n\
             (\n\
-                /<script\\u0020src=\"assets\\.utility2\\.[\\S\\s]*?<script\\u0020src=\"assets\\.example\\.js\">/\n\
+                /#unless\\u0020isRollup[\\S\\s]*?<script\\u0020src=\"assets\\.example\\.js\">/\n\
             ),\n\
             // customize quickstart-example-js-screenshot\n\
             (\n\
