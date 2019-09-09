@@ -49877,7 +49877,7 @@ if (local.isBrowser) {
 /*
  * lib.utility2.js (2019.9.8)
  * https://github.com/kaizhu256/node-utility2
- * this zero-dependency package will provide a collection of high-level functions to to build, test, and deploy webapps
+ * this zero-dependency package will provide high-level functions to to build, test, and deploy webapps
  *
  */
 
@@ -51136,13 +51136,13 @@ the greatest app in the world!\n\
 \n\
 \n\
 # documentation\n\
-#### cli help\n\
-![screenshot](https://kaizhu256.github.io/node-my-app-lite/build/screenshot.npmPackageCliHelp.svg)\n\
-\n\
 #### api doc\n\
 - [https://kaizhu256.github.io/node-my-app-lite/build..beta..travis-ci.org/apidoc.html](https://kaizhu256.github.io/node-my-app-lite/build..beta..travis-ci.org/apidoc.html)\n\
 \n\
 [![apidoc](https://kaizhu256.github.io/node-my-app-lite/build/screenshot.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://kaizhu256.github.io/node-my-app-lite/build..beta..travis-ci.org/apidoc.html)\n\
+\n\
+#### cli help\n\
+![screenshot](https://kaizhu256.github.io/node-my-app-lite/build/screenshot.npmPackageCliHelp.svg)\n\
 \n\
 #### swagger doc\n\
 - [https://kaizhu256.github.io/node-my-app-lite/build..beta..travis-ci.org/app/assets.swgg.html](https://kaizhu256.github.io/node-my-app-lite/build..beta..travis-ci.org/app/assets.swgg.html)\n\
@@ -66155,7 +66155,7 @@ pre {\n\
 </a>\n\
 \n\
 </h1>\n\
-<h3>this zero-dependency package will provide a collection of high-level functions to to build, test, and deploy webapps</h3>\n\
+<h3>this zero-dependency package will provide high-level functions to to build, test, and deploy webapps</h3>\n\
 \n\
 <a class=\"button\" download href=\"assets.app.js\">download standalone app</a><br>\n\
 <button class=\"button\" data-onevent=\"testRunBrowser\" id=\"buttonTestRun1\">run internal test</button><br>\n\

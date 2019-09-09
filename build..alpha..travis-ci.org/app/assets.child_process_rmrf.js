@@ -2,7 +2,7 @@
 /*
  * lib.child_process_rmrf.js (2019.9.8)
  * https://github.com/kaizhu256/node-child-process-rmrf
- * the greatest app in the world!
+ * this zero-dependency package will provide simple-api using child_process.spawn to "rm -rf" dir
  *
  */
 
